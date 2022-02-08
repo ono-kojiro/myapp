@@ -50,3 +50,25 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# autotool files
+Makefile
+Makefile.in
+*.o
+.deps/
+.libs/
+aclocal.m4
+autom4te.cache/
+config.status
+config/
+config.log
+configure.scan
+configure
+libtool
+*.lo
+*.la
+
+*.rpm
+*.tar.gz
+
+
