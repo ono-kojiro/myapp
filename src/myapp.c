@@ -14,6 +14,8 @@ int main(int argc, char **argv)
 #else
 	printf("mylib() is not called.\n"); 
 #endif
+
+	printf("jenkins pipeline test\n");
 	return 0;
 }
 
