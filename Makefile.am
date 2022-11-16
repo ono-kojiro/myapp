@@ -3,7 +3,8 @@ ACLOCAL_AMFLAGS = -I config
 SUBDIRS = src \
   tests
 
-EXTRA_DIST = myapp.spec
+EXTRA_DIST = myapp.spec \
+	debian
 
 rpm :
 	$(MAKE) dist
@@ -21,4 +22,19 @@ uninstall-rpm:
 
 reinstall-rpm:
 	$(MAKE) uninstall-rpm install-rpm
+
+dpkg :
+	sh mkdebpkg.sh ctrl --package $(PACKAGE_NAME) --version $(PACKAGE_VERSION)
+	$(MAKE) dist
+	cp -f $(PACKAGE_NAME)-$(PACKAGE_VERSION).tar.gz \
+		$(PACKAGE_NAME)_$(PACKAGE_VERSION).tar.gz
+	sh mkdebpkg.sh dsc  --package $(PACKAGE_NAME) --version $(PACKAGE_VERSION)
+
+	rm -rf ./debbuild
+	echo "extract source ..."
+	dpkg-source -x $(PACKAGE_NAME)_$(PACKAGE_VERSION).dsc ./debbuild
+	echo "build package ..."
+	cd debbuild && \
+		dpkg-buildpackage -rfakeroot -b -us -uc
+
 

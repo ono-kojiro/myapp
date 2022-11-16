@@ -71,4 +71,11 @@ libtool
 *.rpm
 *.tar.gz
 
-
+*~
+*.deb
+*.buildinfo
+*.changes
+*.ddeb
+*.dsc
+debian/
+debbuild/
