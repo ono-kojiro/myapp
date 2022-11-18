@@ -5,6 +5,8 @@ set(CMAKE_DISABLE_IN_SOURCE_BUILD ON)
 #   message(FATAL_ERROR "In-source builds are not allowed.")
 #endif("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
 
+configure_file(config.h.in config.h)
+
 project(myapp)
 set(PROJECT_VERSION 1.0.4)
 set(CMAKE_VERBOSE_MAKEFILE ON)
