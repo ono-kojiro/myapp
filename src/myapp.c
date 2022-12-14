@@ -16,6 +16,8 @@ int main(int argc, char **argv)
 #endif
 
 	printf("jenkins pipeline test\n");
+
+    printf("return 0\n");
 	return 0;
 }
 
