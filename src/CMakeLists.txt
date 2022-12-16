@@ -6,5 +6,8 @@ add_executable(myapp
 
 include_directories(${CMAKE_BINARY_DIR})
 
+install(TARGETS myapp
+    EXPORT myapp)
+
 
 
