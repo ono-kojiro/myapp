@@ -1,10 +1,9 @@
 TESTS = 01-simple.sh 02-simple.sh
 
-TEST_LOG_DRIVER = env AM_TAP_AWK='$(AWK)' $(SHELL) \
-                  $(top_srcdir)/config/tap-driver.sh
+LOG_DRIVER := $(SHELL) test_wrapper $(top_srcdir)/config/test-driver
 
 EXTRA_DIST = $(TESTS)
 
-test :
-	LD_LIBRARY_PATH=$(LIBMYLIB_DIR)/lib $(MAKE) check
+check :
+	trs2junit -o junit_result.xml *.trs
 
