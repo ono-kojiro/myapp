@@ -1,4 +1,5 @@
-01-simple.sh
 *.trs
 *.log
-
+*.time
+*.ts
+*.xml

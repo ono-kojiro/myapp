@@ -2,7 +2,8 @@
 
 # to test shared library, define LD_LIBRARY_PATH
 
-LD_LIBRARY_PATH=@LIBMYLIB_DIR@/lib \
-  ../src/myapp
+sleep 1
+
+../src/myapp
 
 
