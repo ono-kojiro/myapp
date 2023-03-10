@@ -72,6 +72,4 @@ AC_CONFIG_FILES([Makefile
 				 tests/Makefile
 				 ])
 
-AC_CONFIG_FILES([tests/01-simple.sh], [chmod +x tests/01-simple.sh])
-
 AC_OUTPUT
