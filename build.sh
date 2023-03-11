@@ -45,7 +45,12 @@ check()
 
 install()
 {
-  make install DESTDIR=`pwd`/buildroot
+  make install DESTDIR=`pwd`/root
+}
+
+package()
+{
+  make dpkg
 }
 
 all()
@@ -53,6 +58,8 @@ all()
   config
   build
   check
+  install
+  package
 }
 
 
@@ -79,9 +86,7 @@ while [ $# -ne 0 ]; do
 done
 
 if [ $# -eq 0 ]; then
-  echo "ERROR : no target"
-  usage
-  exit 1
+  all
 fi
 
 for target in "$@"; do

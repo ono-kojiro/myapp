@@ -79,3 +79,4 @@ libtool
 *.dsc
 debian/
 debbuild/
+root/
