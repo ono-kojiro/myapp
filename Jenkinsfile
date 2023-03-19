@@ -12,9 +12,9 @@ pipeline {
                 sh  'sh build.sh build'
             }
         }
-        stage('test'){
+        stage('check'){
             steps {
-                sh  'sh build.sh test'
+                sh  'sh build.sh check'
             }
         }
         stage('install'){
@@ -22,9 +22,19 @@ pipeline {
                 sh  'sh build.sh install'
             }
         }
+        stage('package'){
+            steps {
+                sh  'sh build.sh package'
+            }
+        }
         stage('publish'){
             steps {
                 sh 'sh build.sh publish'
+            }
+        }
+        stage('upload'){
+            steps {
+                sh  'sh build.sh upload'
             }
         }
     }

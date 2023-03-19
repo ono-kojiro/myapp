@@ -37,4 +37,6 @@ dpkg :
 	cd debbuild && \
 		dpkg-buildpackage -rfakeroot -b -us -uc
 
+print-%  :
+	@echo $($*)
 

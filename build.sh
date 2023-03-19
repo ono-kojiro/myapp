@@ -69,6 +69,14 @@ publish()
   jf rt build-publish ${JOB_NAME} ${BUILD_NUMBER}
 }
 
+upload()
+{
+  pkgname=$(make print-PACKAGE_NAME)
+  pkgver=$(make print-PACKAGE_VERSION)
+  jf rt upload --flat ${pkgname}_${pkgver}_amd64.deb mydebrepo-local
+}
+
+
 all()
 {
   config
