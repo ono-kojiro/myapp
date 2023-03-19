@@ -4,37 +4,27 @@ pipeline {
     stages {
         stage('configure'){
             steps {
-                sh '''#!/bin/sh
-                autoreconf -vi
-                sh configure --prefix=/usr \
-                    --with-libmylib-include=${JENKINS_HOME}/workspace/libmylib/src \
-                    --with-libmylib-lib=${JENKINS_HOME}/workspace/libmylib/src
-                '''
+                sh 'sh build.sh configure'
             }
         }
         stage('build'){
             steps {
-                sh  'make -j `nproc`'
+                sh  'sh build.sh build'
             }
         }
         stage('test'){
             steps {
-                sh  'make check'
+                sh  'sh build.sh test'
             }
         }
         stage('install'){
             steps {
-                sh  'make install DESTDIR=`pwd`/dest'
+                sh  'sh build.sh install'
             }
         }
         stage('publish'){
             steps {
-                sh '''#!/bin/sh
-                  jf rt build-clean
-                  jf rt build-add-git
-                  jf rt build-collect-env ${JOB_NAME} ${BUILD_NUMBER}
-                  jf rt build-publish ${JOB_NAME} ${BUILD_NUMBER}
-                '''
+                sh 'sh build.sh publish'
             }
         }
     }
