@@ -53,6 +53,30 @@ package()
   make dpkg
 }
 
+publish()
+{
+  if [ -z "${JOB_NAME}" ]; then
+    JOB_NAME="NoName"
+  fi
+
+  if [ -z "${BUILD_NUMBER}" ]; then
+    BUILD_NUMBER=1
+  fi
+
+  jf rt build-clean
+  jf rt build-add-git
+  jf rt build-collect-env ${JOB_NAME} ${BUILD_NUMBER}
+  jf rt build-publish ${JOB_NAME} ${BUILD_NUMBER}
+}
+
+upload()
+{
+  pkgname=$(make print-PACKAGE_NAME)
+  pkgver=$(make print-PACKAGE_VERSION)
+  jf rt upload --flat ${pkgname}_${pkgver}_amd64.deb mydebrepo-local
+}
+
+
 all()
 {
   config
