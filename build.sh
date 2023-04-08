@@ -4,7 +4,9 @@ top_dir="$(cd "$(dirname "$0")" > /dev/null 2>&1 && pwd)"
 
 usage()
 {
-  echo "usage : $0 [options] target1 target2 ..."
+  cat - << EOF
+usage : $0 [options] target1 target2 ...
+EOF
 }
 
 configure()
