@@ -80,3 +80,5 @@ libtool
 debian/
 debbuild/
 root/
+
+rpmbuild/
