@@ -52,7 +52,22 @@ install()
 
 package()
 {
-  make dpkg
+  name=`cat /etc/os-release | \
+    grep -e '^ID_LIKE=' | \
+    gawk -F '=' '{ print $2 }' \
+    | sed 's|"||g'`
+
+  case "$name" in
+    Ubuntu* )
+      make dpkg
+      ;;
+    rhel* )
+      make rpm
+      ;;
+    * )
+      echo "ERROR : Unknown OS type"
+      ;;
+  esac
 }
 
 publish()
