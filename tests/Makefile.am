@@ -5,5 +5,5 @@ LOG_DRIVER := $(SHELL) test_wrapper $(top_srcdir)/config/test-driver
 EXTRA_DIST = test_wrapper trs2junit $(TESTS)
 
 check :
-	python $(top_srcdir)/tests/trs2junit -o junit_result.xml *.trs
+	$(PYTHON) $(top_srcdir)/tests/trs2junit -o junit_result.xml *.trs
 

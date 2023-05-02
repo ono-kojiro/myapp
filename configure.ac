@@ -21,6 +21,9 @@ AC_PROG_CC
 
 AC_PROG_AWK
 
+AM_PATH_PYTHON(,, [:])
+AM_CONDITIONAL([HAVE_PYTHON], [test "$PYTHON" != :])
+
 AC_ARG_WITH([libmylib_include],
   [  --with-libmylib-include=DIR  libmylib include directory ],
   CFLAGS="$CFLAGS -I$withval"
